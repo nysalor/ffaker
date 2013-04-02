@@ -12,19 +12,24 @@ module Faker
       WORDS.random_pick(num)
     end
 
+    def characters(char_count = 255)
+      return '' if char_count.respond_to?(:to_i) && char_count.to_i < 1
+      rand(36**char_count).to_s(36).rjust(char_count, '0').chars.to_a.shuffle.join
+    end
+
     def sentence(word_count = 4)
       s = words(word_count + rand(6))
       s = s.join(' ')
       s.capitalize!
       "#{s}."
     end
-    
+
     alias_method :phrase, :sentence
 
     def sentences(sentence_count = 3)
       (1..sentence_count).map { sentence }
     end
-    
+
     alias_method :phrases, :sentences
 
     def paragraph(sentence_count = 3)

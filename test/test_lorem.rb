@@ -5,10 +5,14 @@ class TestLorem < Test::Unit::TestCase
     assert_match /[ a-z]+/, Faker::Lorem.paragraph
   end
 
+  def test_characters
+    assert_match /[ a-z]+/, Faker::Lorem.characters
+  end
+
   def test_sentence
     assert_match /[ a-z]+/, Faker::Lorem.sentence
   end
-  
+
   def test_phrase
     assert_match /[ a-z]+/, Faker::Lorem.phrase
   end
